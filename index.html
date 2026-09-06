@@ -195,9 +195,9 @@ function render(){
  $("#more").hidden=rows.length<=ST.shown;
  $("#more").textContent="Show more ("+(rows.length-ST.shown)+" remaining)";
 }
-document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
+document.querySelectorAll(".chip[data-k]").forEach(b=>b.addEventListener("click",()=>{
  const k=b.dataset.k;ST[k]=b.dataset.v;ST.shown=60;
- b.parentElement.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));render();window.scrollTo({top:0});
+ b.parentElement.querySelectorAll(".chip[data-k]").forEach(x=>x.setAttribute("aria-pressed",x===b));render();window.scrollTo({top:0});
 }));
 $("#q").addEventListener("input",e=>{ST.q=e.target.value;ST.shown=60;render()});
 (function(){const names=[...new Set(DATA.flatMap(r=>(r.stores||[]).map(s=>s[0])))].sort();const sel=$("#store");
